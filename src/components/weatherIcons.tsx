@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import {
     WiDaySunny,
     WiNightClear,
@@ -12,7 +14,7 @@ import {
     WiSleet
 } from "react-icons/wi";
 
-export const WeatherIcons = {
+export const WeatherIcons: Record<string, ReactNode> = {
     "clear-day": <WiDaySunny />,
     "clear-night": <WiNightClear />,
     "partly-cloudy-day": <WiDaySunny />,

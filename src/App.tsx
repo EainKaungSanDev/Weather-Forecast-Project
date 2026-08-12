@@ -2,7 +2,7 @@ import type { ChangeEvent } from "react";
 
 import { useState, useEffect } from "react"; 
 
-import type { Weather } from "../types/weatherInterface"; 
+import type { Weather } from "./types/weatherInterface"; 
 
 import { WeatherForAll } from "./components/weatherForAll"; 
 
@@ -88,7 +88,13 @@ if (city.trim() === "") return;
      },[unit])
      
           
-     const MapClick = ({ setCity, setPosition }: { setCity: (value: string) => void }) => {
+     const MapClick = ({
+    setCity,
+    setPosition
+}: {
+    setCity: (value: string) => void;
+    setPosition: (value: [number, number] | null) => void;
+}) => {
 
     useMapEvents({
         click: (e) => {
@@ -96,13 +102,12 @@ if (city.trim() === "") return;
             const lng = e.latlng.lng;
 
             setCity(`${lat},${lng}`);
-            setPosition([lat,lng])
+            setPosition([lat, lng]);
         }
     });
 
     return null;
 };
-
 
      return ( 
      <>
