@@ -1,17 +1,4 @@
-import express from "express";
-import rateLimit from "express-rate-limit";
-
-const app = express();
-
-const apiLimiter = rateLimit({
-    windowMs: 60 * 1000,
-    max: 10,
-    message: {
-        error: "Too many requests. Please wait one minute!"
-    }
-});
-
-app.get("/", apiLimiter, async (req, res) => {
+export default async function handler(req, res) {
     try {
         const query = req.query.query;
         const unit = req.query.unit;
@@ -23,20 +10,18 @@ app.get("/", apiLimiter, async (req, res) => {
         );
 
         if (!weatherRes.ok) {
-            throw new Error("weather data is not available");
+            throw new Error("Weather data is not available");
         }
 
         const data = await weatherRes.json();
 
-        res.json({ data });
+        return res.status(200).json({ data });
 
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.log(error);
 
-        res.status(500).json({
+        return res.status(500).json({
             error: "Weather data is not available now! Please try again!"
         });
     }
-});
-
-export default app;
+}
