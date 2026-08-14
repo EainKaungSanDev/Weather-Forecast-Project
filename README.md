@@ -5,9 +5,6 @@ A responsive weather forecast web app built with React, TypeScript, Vite, and Vi
 ## 🔗 Live Demo
 - 🌐 [View Live App](https://weather-forecast-lac-beta.vercel.app)
 
-## 📱 App Preview
-![Weather Forecast App Screenshot]()
-
 ## ✨ Features
 
 - 🔎 Search weather by city name
